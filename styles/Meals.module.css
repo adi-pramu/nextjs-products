@@ -1,0 +1,33 @@
+.gridContainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: grey;
+    padding: 10px;
+}
+
+.gridItem {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.gridItem li {
+    list-style-type: none;
+}
+
+.detailPage {
+    background-color: grey;
+    padding-top: 5%;
+}
+
+.details {
+    width: 70%;
+    margin: auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: rgba(255, 255, 255, 0.8);
+    justify-content: center;
+    text-align: center;
+}
