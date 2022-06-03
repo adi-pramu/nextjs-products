@@ -1,8 +1,12 @@
+import { Box, Divider, List, ListItem, ListItemText } from '@material-ui/core';
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import { useStyles } from '../helper/styles';
 
 export default function Home() {
+  const classes = useStyles();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -11,16 +15,26 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      
       <main className={styles.main}>
+        <Box className={classes.backgroundColor}>
+        
         <h1>Halaman Utama</h1>
 
-        <ul className={styles.menu}>
-          <li><Link href={`/csr`}>CSR</Link></li>
+        {/* <ul className={styles.menu}> */}
+        <List component="nav" className={classes.root} aria-label="mailbox folders">
+          {/* <li><Link href={`/csr`}>CSR</Link></li>
           <li><Link href={`/ssr`}>SSR</Link></li>
           <li><Link href={`/isr`}>ISR</Link></li>
-          <li><Link href={`/ssg`}>SSG</Link></li>
-        </ul>
+          <li><Link href={`/ssg`}>SSG</Link></li> */}
+          <ListItem button><Link href={`/categories`}><ListItemText primary='Categories' /></Link></ListItem>
+          <Divider/>
+          <ListItem button><Link href={`/categories/subscribe`}><ListItemText primary='Subscription' /></Link></ListItem>
+        </List>
+        {/* </ul> */}
+        </Box>
       </main>
+      
 
     </div>
   )
