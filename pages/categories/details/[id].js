@@ -1,4 +1,5 @@
 import { Box } from "@material-ui/core";
+import { Skeleton } from "@material-ui/lab";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useStyles } from "../../../helper/styles";
@@ -15,7 +16,21 @@ const Product = () => {
         variables: { sku: id }
     });
 
-    if (loading) return <h1>Loading...</h1>;
+    // if (loading) return <h1>Loading...</h1>;
+
+    if (loading) return (
+        <>
+            <Box className={classes.backgroundColor}>
+                <>
+                    <h1><Skeleton variant="text" /></h1>
+                    <Skeleton variant="rect" width={250} height={300}/>
+                    <Skeleton variant="rect" width="auto" height={400}/>
+                    <h3><Skeleton variant="text" /></h3>
+                </>
+            </Box>
+        </>
+    )
+
     if (error) {   
         return `Error! ${error.message}`;
     }

@@ -1,6 +1,7 @@
 
 import { useLazyQuery } from "@apollo/client";
 import { Box, Button, CircularProgress, Divider, List, ListItem, ListItemText } from "@material-ui/core";
+import { Skeleton } from "@material-ui/lab";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { GET_PRODUCT_BY_CATEGORY } from "../../helper/schema";
@@ -13,7 +14,18 @@ const Category = () => {
 
     const [getCategory, { loading, error, data }] = useLazyQuery(GET_PRODUCT_BY_CATEGORY);
 
-    if (loading) return <CircularProgress/>;
+    if (loading) return (
+        <>
+            <Box className={classes.backgroundColor}>
+                <h1>Products</h1>
+
+                <div>
+                    <Skeleton variant="rect" height={500} width='auto' />
+                </div>
+            </Box>
+        </>
+    );
+
     if (error) return `Error! ${error.message}`;
     return (
         <>

@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
-import { Box, CircularProgress, Divider, List, ListItem, ListItemText } from "@material-ui/core";
+import { Box, Divider, List, ListItem, ListItemText } from "@material-ui/core";
+import { Skeleton } from "@material-ui/lab";
 import Link from "next/link";
 import { GET_CATEGORIES } from "../../helper/schema";
 import { useStyles } from "../../helper/styles";
@@ -10,7 +11,17 @@ const Categories = () => {
 
     const { loading, error, data } = useQuery(GET_CATEGORIES);
 
-    if (loading) return <CircularProgress/>;
+    if (loading) return (
+        <>
+            <Box className={classes.backgroundColor}>
+                <h1>{title}</h1>
+
+                <div>
+                    <Skeleton variant="rect" height={500} width='auto' />
+                </div>
+            </Box>
+        </>
+    );
     if (error) {   
         return `Error! ${error.message}`;
     }
